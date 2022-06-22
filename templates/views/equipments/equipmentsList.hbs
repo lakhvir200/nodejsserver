@@ -1,0 +1,77 @@
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+        <title>{{title}}</title>
+    </head>
+    <body>
+        <div class="container">
+            <h2 class="text-center mt-3 mb-3">{{title}}</h2>            
+                
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col">Equipment Records</div>
+                        <div class="col"></div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+
+                     
+  <a href="/add" class="btn btn-success">Add Equipment</a>
+  <br /><br />
+
+   <table class="table" width="100%" style="font-size:85% ">
+    <tr>
+      <th>#ID</th>
+      <th>Equipment ID</th>
+      <th>EquipName</th>
+      <th>Specification</th>
+      <th>Department</th>
+      <th>Price</th>
+     <th>Date of purchase</th>
+      <th>Status</th>
+      <th>Action</th>
+    </tr>
+    {{#each equipments}}
+      <tr>
+        <td>{{this.ID}}</td>
+        
+        <td>{{this.EQUIPMENT_ID}}</td>
+        <td>{{this.EQUIPMENT_NAME}}</td>
+        <td>{{this.COMPLETE_SPECIFICATION}}</td>
+        <td>{{this.DEPARTMENT}}</td>
+        <td>{{this.COST_OF_EQUIPMENT}}</td>
+        <td>{{this.DATE_OF_PURCHASE}}</td> 
+        <td>{{this.EQUIP_STATUS}}</td>
+        <td>
+            <a href="/equipments/byId/{{this.ID}}" class="btn btn-info btn-sm">Edit</a>
+          
+        </td>
+         <td>
+           
+           <!-- <a href="/equipment/delete/{{this.ID}}" class="btn btn-danger btn-sm">Delete</a> -->
+        </td>
+      </tr>
+    {{/each}}
+  </table>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            
+
+        </div> 
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    </body>
+</html>

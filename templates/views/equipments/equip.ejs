@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+     
+
+    <title></title>
+    <style>
+        .frame {
+            width: 250px;
+            height: 200px;
+            border: 3px solid #ccc;
+            background: #eee;
+            margin: auto;
+            padding: 15px 10px;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="text-center mt-3 mb-3">
+            <%= title %>
+        </h1>
+
+        <% if(action=='add' ) { %>
+
+            <div class="card">
+                <div class="card-header">Sample Form</div>
+                <div class="card-body">
+                   
+                    <form method="POST" action="/equipment/save">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="mb-3">
+                                    <label style="font-weight:bold;">Hosp Name</label>
+                                    <select class="form-control" data-style="btn-info" name="UNIT_NAME">
+                                        <optgroup>                                           
+                                            <option name="Beas Hosp" value="Beas Hosp">Beas Hosp</option>
+                                            <option name="Skp Hosp" value="Skp Hosp">Skp Hosp</option>
+                                            <option name="Bhota Hosp" value="Bhota Hosp">Bhota Hosp</option>
+                                            <option name="Dera Hosp" value="Dera Hosp">Dera Hosp</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-3">
+                                <div class="mb-3">
+                                    <label style="font-weight:bold;">Bill Date</label>
+                                    <input type="date" name="BILL_DATE" id="BILL_DATE" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="mb-3">
+                                    <label style="font-weight:bold;">Maint Periodicity</label>
+                                    <select class="form-control" data-style="btn-info" name="MAINT_PERIODICITY">
+                                        <optgroup label="Select Table">
+                                            <option name="Quaterly" value="Quaterly">Quaterly</option>
+                                            <option name="Annually" value="Annually">Annually</option>
+                                            <option name="Monthally" value="Monthally">Monthally</option>
+                                            <option name="Bi-Monthally" value="Bi-Monthally">Bi-Monthally</option>
+                                            <option name="Fortnightly" value="Fortnightly">Fortnightly</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="mb-3">
+                                    <label style="font-weight:bold">Model</label>
+                                    <input type="text" name="MODEL" id="MODEL" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label style="font-weight:bold;">Department</label>
+                                <select class="form-control dropdown-toggle" data-style="btn-info" id="dept"  name="department">                     
+                                    <option selected>Open this select menu</option> 
+                                    <option name="" value="0">Select Department</option>                                        
+                                  
+                                </select>
+                            
+                            </div>
+                            <div class="col-md-3">
+                                <div class="mb-3">
+                                    <label style="font-weight:bold;">Date of Installation</label>
+                                    <input type="date" name="DATE_OF_PURCHASE" id="DATE_OF_PURCHASE" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="mb-3">
+                                    <label style="font-weight:bold">Bill Detail</label>
+                                    <input type="text" name="BILL_NO" id="BILL_NO" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="mb-3">
+                                    <label style="font-weight:bold">Category</label>
+                                    <select class="form-control" data-style="btn-info" name="CATEGORY">
+                                        <optgroup>
+                                            <option name="Medical" value="Medical">Medical</option>
+                                            <option name="Non Medical" value="Non Medical">Non Medical</option>
+                                            <option name="Computer" value="Computer">Computer</option>
+                                            <option name="UPS" value="UPS">UPS</option>
+                                            <option name="Printer" value="Printer">Printer</option>
+                                            <option name="CCTV" value="CCTV">CCTV</option>
+                                            <option name="Audio Visual" value="Audio Visual">Audio Visual</option>
+                                            <option name="Communication" value="Communication">Communication</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!--<div class="frame">
+                                <div class="col-md-3">
+                                    <div class="mb-3">
+                                        <img src="/uploads/media/default/0001/01/b408569013c0bb32b2afb0f0d45e93e982347951.jpeg"
+                                            alt="Nature">
+                                    </div>
+                                </div>
+                            </div> -->
+                          
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="mb-3">
+                                    <label style="font-weight:bold;">Equipment ID</label>
+                                    <input type="text" name="EQUIPMENT_ID" id="EQUIPMENT_ID" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="mb-3">
+                                    <label style="font-weight:bold;">Price</label>
+                                    <input type="text" name="COST_OF_EQUIPMENT" id="COST_OF_EQUIPMENT" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="mb-3">
+                                    <label style="font-weight:bold;">Supplier</label>
+                                    <input type="text" name="SUPPLIER" id="SUPPLIER" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="mb-3">
+                                    <label style="font-weight:bold">Sub Category</label>
+                                    <input type="text" name="SUBCATEGORY" id="SUBCATEGORY" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="mb-3">
+                                    <label style="font-weight:bold;">Equipment Name</label>
+                                    <select class="form-control" data-style="btn-info" name="EQUIPMENT_NAME">
+                                       
+                                            <option name="" value="0">Select Equip Name</option>
+                                            <option name="Beas Hosp" value="Beas Hosp">Beas Hosp</option>
+                                            <option name="Skp Hosp" value="Skp Hosp">Skp Hosp</option>
+                                            <option name="Bhota Hosp" value="Bhota Hosp">Bhota Hosp</option>
+                                            <option name="Dera Hosp" value="Dera Hosp">Dera Hosp</option>
+                                       
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="mb-3">
+                                    <label style="font-weight:bold;">Status</label>
+                                    <select class="form-control" data-style="btn-info" name="EQUIP_STATUS">
+                                        <optgroup>
+                                            <option name="OK" value="OK">OK</option>
+                                            <option name="BER" value="BER">BER</option>
+                                            <option name="NOK" value="NOK">NOK</option>
+                                            <option name="Transffered" value="Transffered">Transffered</option>
+                                            <option name="Condemned" value="Condemned">Condemned</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="mb-3">
+                                    <label style="font-weight:bold;">Budget Year</label>
+                                    <input type="Text" name="BUDGET_YEAR" id="BUDGET_YEAR" class="form-control" />
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="mb-3">
+                                        <label style="font-weight:bold;">Specification</label>
+                                        <textarea name="COMPLETE_SPECIFICATION" rows="4" cols="10" wrap="soft" maxlength="140"
+                                            style="overflow:hidden; resize:none" class="form-control" ;></textarea>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="mb-3">
+                                        <label style="font-weight:bold;">Remarks</label>
+                                        <textarea name="EQUIP_REMARKS" rows="4" cols="10" wrap="soft" maxlength="140"
+                                            style="overflow:hidden; resize:none" class="form-control" ;></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="mb-3">
+                                        <label style="font-weight:bold">Warranty</label>
+                                        <select class="form-control" data-style="btn-info" name="WARRANTY">
+                                            <optgroup>
+                                                <option name="1" value="1">1</option>
+                                                <option name="2" value="2">2</option>
+                                                <option name="3" value="3">3</option>
+                                                <option name="4" value="4">4</option>
+                                                <option name="5" value="5">5</option>
+                                            </optgroup>
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>                            
+
+                            <div class="mb-3">
+                                <input type="submit" name="submit_button" class="btn btn-primary" value="Add" />
+                                <a href="/equipments/list" class="btn btn-success btn-sm ">Close</a>                              
+                                <input type="submit" name="Image_button" class="btn btn-primary" value="Upload Image" />
+                                
+                            </div>
+                        </div>
+
+
+                    </form>
+                </div>
+            </div>
+
+            <% } else if(action=='edit' ) { %>
+                <div class="card">
+                    <div class="card-header">Sample Form</div>
+                    <div class="card-body">
+                        <form method="POST" action="/equipments/edit/<%= equipments.ID %>">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label>First Name</label>
+                                        <input type="text" name="first_name" id="first_name" class="form-control"
+                                            value="<%= equipments.first_name %>" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label>Last Name</label>
+                                        <input type="text" name="last_name" id="last_name" class="form-control"
+                                            value="<%= equipments.ID %>" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label>Age</label>
+                                        <input type="number" name="age" id="age" class="form-control"
+                                            value="<%= equipments.age %>" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label>Gender</label>
+                                        <select name="gender" id="gender" class="form-control">
+                                            <option value="Male">Male</option>
+                                            <option value="Female">Female</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <input type="submit" name="submit_button" class="btn btn-primary" value="Edit" />
+                            </div>
+                        </form>
+                        <script>
+                            document.getElementById('gender').value = "<%= equipments.gender %>";
+                        </script>
+                    </div>
+                </div>
+                <% } else { %>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="col">Sample Data</div>
+                                <div class="col">
+                                    <a href="/equipment/add" class="btn btn-success btn-sm float-end">Add</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" width="100%" style="font-size:85% ">
+                                    <tr>
+                                        <th>#ID</th>
+                                        <th>Equipment ID</th>
+                                        <th>EquipName</th>
+                                        <th>Specification</th>
+                                        <th>Department</th>
+                                        <th>Price</th>
+                                        <th>Date of purchase</th>
+                                        <th>Hosp Name</th>
+                                        <th>Status</th>                                       
+                                        <th colspan="2">Action</th>
+                                    </tr>
+                                    <% if(equipments.length> 0)
+                                        {
+                                        equipments.forEach(function(data){
+                                        %>
+                                        <tr>
+                                            <td>
+                                                <%= data.ID %>
+                                            </td>
+                                            <td>
+                                                <%= data.EQUIPMENT_ID %>
+                                            </td>
+                                            <td>
+                                                <%= data.EQUIPMENT_NAME %>
+                                            </td>
+                                            <td>
+                                                <%= data.COMPLETE_SPECIFICATION %>
+                                            </td>
+                                            <td>
+                                                <%= data.DEPARTMENT %>
+                                            </td>
+                                            <td>
+                                                <%= data.COST_OF_EQUIPMENT %>
+                                            </td>
+                                            <td>
+                                                <%= data.DATE_OF_PURCHASE %>
+                                            </td>
+                                            <td>
+                                                <%= data.UNIT_NAME %>
+                                            </td>
+                                            <td>
+                                                <%= data.EQUIP_STATUS %>
+                                            </td>
+                                            <td>
+                                                <!-- <a href="/equipments/byId/<%= data.ID %>" class="btn btn-primary btn-sm">Edit</a> -->
+                                                <a href="/equipments/byId/<%= data.ID %>"
+                                                    class="btn btn-primary btn-sm">Edit</a>
+                                            </td>
+                                            <td>
+                                    <a href="/equipment/delete/<%= data.ID %>" class="btn btn-danger btn-sm">Delete</a>
+                                </td> 
+                                        </tr>
+                                        <% }); } else { %>
+                                            <tr>
+                                                <td colspan="5">No Data Found</td>
+                                            </tr>
+                                            <% } %>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <% } %>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+        
+</body>
+
+</html>
+
+<script>
+  
+   
+    $("#dept").click(function(){
+        $.ajax({
+           url:"/departments",
+           processData: false,
+           dataType:"json",
+           type: 'get',
+           cache: false,
+           success: function (data) {           
+            var jsonList =  data.recordset
+              console.log(jsonList) 
+                var listItems= "";
+               for (var i = 0; i < jsonList.length; i++){
+               listItems+= '<option value="" > '+ jsonList[i].department + ' </option>';
+               }
+             $("#dept").html(listItems);
+
+        }  
+    
+     });
+   
+    });
+
+    
+//    var jsonList = {"Table" : [{"stateid" : "2","statename" : "Tamilnadu"},
+//                 {"stateid" : "3","statename" : "Karnataka"},
+//                 {"stateid" : "4","statename" : "Andaman and Nicobar"},
+//                  {"stateid" : "5","statename" : "Andhra Pradesh"},
+//                  {"stateid" : "6","statename" : "Arunachal Pradesh"}]}
+    // var jsonList =  [{"stateid" : "2","statename" : "Tamilnadu"},
+    //             {"stateid" : "3","statename" : "Karnataka"},
+    //             {"stateid" : "4","statename" : "Andaman and Nicobar"},
+    //              {"stateid" : "5","statename" : "Andhra Pradesh"},
+    //                 {"stateid" : "6","statename" : "Arunachal Pradesh"}]
+
+
+    // $(document).on( 'click',function(){
+
+    //   var listItems= "";
+    //   for (var i = 0; i < jsonList.length; i++){
+    //     listItems+= "<option value='" + jsonList[i].stateid + "'>" + jsonList[i].statename + "</option>";
+    //   }
+    //   $("#dept").html(listItems);
+    // });    
+</script>
