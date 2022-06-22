@@ -76,9 +76,7 @@ router.route('/insertdepartments').post((req,res)=>{
       })
 
 router.route('/equipments/list').get((req,res)=>{
-    equipments.getequipments().then(result=>{
-        //console.log(result);
-      // var data= (result[0]); 
+    equipments.getequipments().then(result=>{       
        res.json(result);
        // res.render('equipments/equip',{title:'Equipments List',action:'list',equipments:data})
        //  response.render('equipments', {title:'Node.js MySQL CRUD Application', action:'list', sampleData:result[0]});
